@@ -1,0 +1,14 @@
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        pascal_list = [[1]]
+        
+        for i in range(1, numRows):
+            curr_level = []
+            
+            for j in range(1, len(pascal_list[i-1])):
+                ele = pascal_list[i-1][j] + pascal_list[i-1][j-1]
+                curr_level.append(ele)
+            
+            pascal_list.append([1] + curr_level + [1])
+            
+        return pascal_list
