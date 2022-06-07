@@ -1,0 +1,27 @@
+# Quick Select
+
+#https://practice.geeksforgeeks.org/problems/kth-smallest-element5635/1/
+
+class Solution:
+    def kthSmallest(self,nums, l, r, k):
+        pivot = r
+        p = l
+        
+        
+        for i in range(l, r):
+            if nums[i] <= nums[pivot]:
+                nums[p], nums[i] = nums[i], nums[p]
+                
+                p+= 1
+                
+        nums[pivot], nums[p] = nums[p], nums[pivot]
+        
+        
+        if  k-1 < p:
+            return self.kthSmallest(nums, l, p-1, k)
+            
+        elif   p < k-1:
+            return self.kthSmallest(nums, p+1, r, k)
+            
+        elif p == k-1:
+            return nums[p]
