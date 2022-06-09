@@ -1,0 +1,12 @@
+class Solution:
+    def rotate(self, arr: List[List[int]]) -> None:
+        for i in range(0, len(arr)):
+            for j in range(0, len(arr[i])):
+                
+                if j > i:
+                    arr[i][j], arr[j][i] = arr[j][i], arr[i][j]
+                
+        for i in range(0, len(arr)):
+            arr[i].reverse()
+            
+        
