@@ -1,0 +1,58 @@
+# code for these question
+
+
+# What we done is simple. If we create a new linked list, the space complexity will be o(m+n) to avoid these. We had took the nodes from the given linked list and
+# attached them to the variable one by one by comparing the nodes. If the given node is small then we plucked it from list1 and attached to our result.
+
+
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        
+        if list1 is None:
+            return list2
+        
+        if list2 is None:
+            return list1
+        
+        res = None
+        
+        # We initialy finding the first lowest node to attach to our linkedlist
+        if list1 is not None and list2 is not None:
+            if list1.val > list2.val:
+                x = list2
+                list2 = list2.next
+                x.next = None
+                res = x
+                
+            else:
+                x = list1
+                list1 = list1.next
+                x.next = None
+                res = x
+                
+        y = res
+        
+        # Using loop we are plucking the nodes and attaching to our linked list
+        while list1 is not None and list2 is not None:
+            if list1.val > list2.val :
+                x = list2
+                list2 = list2.next
+                x.next = None
+                y.next = x
+                y = y.next
+                
+            else :
+                x = list1
+                list1 = list1.next
+                x.next = None
+                y.next = x
+                y = y.next
+         
+        # We are attching remaining nodes after above loop
+        if list1 is not None:
+            y.next = list1
+            
+        if list2 is not None:
+            y.next = list2
+            
+        return res
