@@ -1,0 +1,25 @@
+"""
+Normally it is little bit difficult to do these merge, but if we have double linked list, we can easily do it by
+
+x        =    1 -> 4 -> 6
+y        =    2 -> 3 -> 5
+
+Now attach both the lists into single one
+new_list    =    1 -> 4 -> 6 -> 2 -> 3 -> 5
+
+Now keep a pointer(i) at 6(end of 1st list) and other pointer(j) at 5(end of 2nd list) in new_list
+Keep comparing those elements, if i.data > j.data ===>   swap(i.data, j.data), j = j.prev
+                               else               ===>   i = i.prev
+
+"""
+
+
+
+
+
+                
+                
+                
+        
+                
+                
