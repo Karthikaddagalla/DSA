@@ -1,0 +1,38 @@
+# Here we had just finded that nth node = len(linked) - nth + 1
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        
+        if head is None or head.next is None:
+            return None
+        
+        temp = head
+        len = 0
+        
+        while temp is not None:
+            len = len+1
+            temp = temp.next
+            
+        len = len - n
+        
+        if len == 0:
+            return head.next
+        
+        find = 0
+        temp = head
+        
+        while find < len-1:
+            temp = temp.next
+            find = find+1
+            
+        x = temp.next
+        temp.next = temp.next.next
+        x.next = None
+        
+        return head
+            
