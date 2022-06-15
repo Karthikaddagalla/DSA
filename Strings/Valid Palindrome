@@ -1,0 +1,32 @@
+
+#https://leetcode.com/problems/valid-palindrome/
+
+# It is little bit difficult interms of writing code directly without stripping of spaces, unwanted characters. But we done it without even stripping. That's great
+
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        
+        start = 0
+        end = len(s) - 1
+        
+        while start <= end:
+            if s[start].isalnum() == False:
+                start = start + 1
+                continue
+                
+            if s[end].isalnum() == False:
+                end = end - 1
+                continue
+                
+            print(s[start] + " hi   ")
+            print(s[end])
+                
+            if s[start].lower() != s[end].lower():
+                return False
+            
+            start = start + 1
+            end = end - 1
+        return True
+            
+        
