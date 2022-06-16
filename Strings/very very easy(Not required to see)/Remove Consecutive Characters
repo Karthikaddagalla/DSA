@@ -1,0 +1,13 @@
+class Solution:
+    def removeConsecutiveCharacter(self, s):
+        
+        if len(s) == 0:
+            return None
+        
+        k = "" + s[0] 
+        
+        for i in range(1, len(s)):
+            if s[i-1] != s[i]:
+                k = k + s[i]
+                
+        return k
