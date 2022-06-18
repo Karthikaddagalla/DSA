@@ -1,0 +1,26 @@
+"""
+Here take the first word in list and compare its letters with letters of other words at same index. If they all are same then add that letter to the string
+
+"""
+
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        
+        x = len(strs[0])
+        k = ""
+        
+        for i in range(0, len(strs[0])):
+            for j in range(0, len(strs)):
+                if i < len(strs[j]) and strs[j][i] != strs[0][i]:
+                    return k
+                
+                if i >= len(strs[j]):
+                    return k
+                
+            k = k + strs[0][i]
+            
+        return k
+                    
+            
+            
+        
