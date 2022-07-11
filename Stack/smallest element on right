@@ -1,0 +1,28 @@
+# https://practice.geeksforgeeks.org/problems/fab3dbbdce746976ba35c7b9b24afde40eae5a04/1/#
+
+
+class Solution:
+    def help_classmate(self, arr, n):
+        stack = []
+        output = [-1] * len(arr)
+        
+        for i in range(len(arr)-1, -1, -1):
+            if len(stack) == 0:  # it means there are no elements smaller than these
+                output[i] = -1
+                stack.append(arr[i])
+                
+            else:
+                while len(stack)!= 0:
+                    ele = stack.pop()
+                    
+                    if ele < arr[i]:
+                        output[i] = ele
+                        stack.append(ele)
+                        stack.append(arr[i])
+                        break
+                        
+                if len(stack) == 0:
+                    output[i] = -1
+                    stack.append(arr[i])
+                    
+        return output
