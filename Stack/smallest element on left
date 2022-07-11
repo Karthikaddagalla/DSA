@@ -1,0 +1,30 @@
+# https://practice.geeksforgeeks.org/problems/smallest-number-on-left3403/1/
+
+
+
+class Solution:
+    def leftSmaller(self, n, arr):
+        
+        output = []
+        stack = []
+        
+        for i in range(0, len(arr)):
+            if len(stack) == 0:        # It means there are no elements smaller than the given element
+                output.append(-1)
+                stack.append(arr[i])
+                
+            else:
+                while len(stack) != 0:   
+                    element = stack.pop()
+                    
+                    if element < arr[i]:
+                        stack.append(element)
+                        stack.append(arr[i])
+                        output.append(element)
+                        break
+                        
+                if len(stack) == 0:
+                    output.append(-1)
+                    stack.append(arr[i])
+                    
+        return output
