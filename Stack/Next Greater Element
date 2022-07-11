@@ -1,0 +1,31 @@
+# https://practice.geeksforgeeks.org/problems/next-larger-element-1587115620/1/#
+
+from collections import deque
+
+class Solution:
+    def nextLargerElement(self,arr,n):
+        stack = deque()
+        output = []
+        
+        for i in range(len(arr)-1, -1, -1):
+            if len(stack) == 0:
+                output.append(-1)
+                stack.append(arr[i])
+                
+            else:
+                while len(stack) != 0:
+                    ele = stack[len(stack) - 1]
+                    if ele > arr[i]:
+                        stack.append(arr[i])
+                        output.append(ele)
+                        break
+                    
+                    else:
+                        stack.pop()
+                        
+                if len(stack) == 0:   # No stack became empty and no element is greater than these
+                    output.append(-1)
+                    stack.append(arr[i])
+                    
+        
+        return output[::-1]
