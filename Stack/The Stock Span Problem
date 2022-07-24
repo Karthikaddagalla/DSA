@@ -1,0 +1,77 @@
+# https://www.geeksforgeeks.org/the-stock-span-problem/
+# These problem is similar version of nearest greater to left
+
+** Note ** If the second for loop in bruteforce approach is using "i" variable then we know the optimized solution uses stack. If you observe these then that problem
+           will be variation of the 4 basiC stack problems(NGL, NGR, NSL, NSR)
+
+arr = [100, 80, 60, 70, 60, 75, 85]
+output = [1] * len(arr)
+stack = []
+
+
+for i in range(0, len(arr)):
+    if len(stack) == 0:
+        output[i] = 1
+        stack.append([arr[i], i])
+        
+    else:
+        while len(stack)!= 0:
+            ele = stack.pop()
+            
+            if ele[0] > arr[i]:
+                stack.append(ele)
+                stack.append([arr[i], i])
+                output[i] = i - ele[1]
+                break
+            
+        else:
+            stack.append([arr[i], i])
+
+print(output)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+** THe more better version where we will only store index in stack than storing both element and its index
+
+arr = [100, 80, 60, 70, 60, 75, 85]
+output = [1] * len(arr)
+stack = []
+
+
+for i in range(0, len(arr)):
+    if len(stack) == 0:
+        output[i] = 1
+        stack.append(i)
+        
+    else:
+        while len(stack)!= 0:
+            ele = stack.pop()
+            
+            if arr[ele] > arr[i]:
+                stack.append(ele)
+                stack.append(i)
+                output[i] = i - ele
+                break
+            
+        else:
+            stack.append(i)
+
+print(output)
