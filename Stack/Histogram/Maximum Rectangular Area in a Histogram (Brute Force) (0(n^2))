@@ -1,0 +1,29 @@
+# https://practice.geeksforgeeks.org/problems/maximum-rectangular-area-in-a-histogram-1587115620/1
+
+
+class Solution:
+    
+    #Function to find largest rectangular area possible in a given histogram.
+    def getMaxArea(self,arr):
+        max_area = 0
+        for i in range(0, len(arr)):
+    
+            for j in range(i, len(arr)):
+                if arr[i] > arr[j]:
+                    break
+        
+            else:
+                j = len(arr)
+
+            for k in range(i, -1, -1):
+                if arr[i] > arr[k]:
+                    break
+        
+            else:
+                k = -1
+        
+            area = (j - k - 1 ) * arr[i]
+    
+            max_area = max(area, max_area)
+    
+        return max_area
