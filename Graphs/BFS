@@ -1,0 +1,36 @@
+# Here BFS means we will  print the element and after that we will print its neighbour vertices
+
+""" unlike trees, graphs may contain cycles, so we may come to the same node again. To avoid processing a node more than once, we use a boolean visited array. 
+For simplicity, it is assumed that all vertices are reachable from the starting vertex. BFS uses a queue data structure for traversal. """
+
+
+https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
+
+
+
+#User function Template for python3
+from queue import Queue
+
+class Solution:
+    
+    #Function to return Breadth First Traversal of given graph.
+    def bfsOfGraph(self, V, adj):
+        
+        output_array = []
+        visited_array = [0] * V
+        queue = Queue()
+        
+        if V != 0:
+            queue.put(0)
+            
+        while queue.qsize() != 0:
+            x = queue.get()
+            
+            if visited_array[x] == 0:
+                visited_array[x] = 1
+                output_array.append(x)
+                for i in adj[x]:
+                    queue.put(i)
+                    
+        
+        return output_array
